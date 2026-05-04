@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+
+<h1><%= article.title %></h1>
+
+<p><%= article.description %></p>
+
+<div class="content">
+  <%- article.html %>
+</div>
+
+<hr>
+
+<% if (user) { %>
+  <a href="/articles/<%= article._id %>/edit">编辑</a>
+
+  <form action="/articles/<%= article._id %>?_method=DELETE" method="POST">
+    <button onclick="return confirm('删除？')">删除</button>
+  </form>
+<% } %>
+
+<%- include('../partials/footer') %>

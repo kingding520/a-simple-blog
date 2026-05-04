@@ -1,0 +1,17 @@
+<%- include('../partials/header', { pageClass: 'create-page' }) %>
+
+<form action="/articles/<%= article._id %>?_method=PUT" method="POST">
+
+  <h1>编辑文章</h1>
+
+  <input name="title" value="<%= article.title %>" required>
+
+  <textarea name="description"><%= article.description %></textarea>
+
+  <textarea name="markdown" rows="20"><%= article.markdown %></textarea>
+
+  <button>更新</button>
+
+</form>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,207 @@
+/* =========================
+   🌌 背景层（全局）
+========================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('/xi.webp') center/cover;
+  filter: blur(10px);
+  transform: scale(1.1);
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: -1;
+}
+
+/* =========================
+   🧱 基础布局
+========================= */
+
+body {
+  max-width: 800px;
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial;
+  color: #333;
+  position: relative;
+  z-index: 0;
+}
+
+/* =========================
+   📦 卡片（列表页）
+========================= */
+
+.card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transition: all 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+/* =========================
+   📖 内容区域
+========================= */
+
+.content {
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+pre {
+  background: #1e1e1e;
+  color: #eee;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+code {
+  background: #f2f2f2;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #111;
+}
+
+a {
+  text-decoration: none;
+  color: #007fff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   ✍️ CREATE / EDIT 页面（统一）
+========================= */
+
+.create-page,
+.edit-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+/* 表单卡片（只保留一份！） */
+.create-page form,
+.edit-page form {
+  width: 100%;
+  max-width: 700px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 32px;
+
+  /* ✅ 保留玻璃效果（你之前被覆盖掉了） */
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   🧾 输入框
+========================= */
+
+.create-page input,
+.create-page textarea,
+.edit-page input,
+.edit-page textarea {
+  width: 100%;
+  padding: 12px 14px;
+
+  border: 1px solid #e5e6eb;
+  border-radius: 10px;
+
+  font-size: 14px;
+  line-height: 1.6;
+
+  outline: none;
+  transition: all 0.2s ease;
+
+  background: rgba(255,255,255,0.9);
+}
+
+/* focus 动效 */
+.create-page input:focus,
+.create-page textarea:focus,
+.edit-page input:focus,
+.edit-page textarea:focus {
+  border-color: #007fff;
+  box-shadow: 0 0 0 3px rgba(0,127,255,0.15);
+}
+
+/* 标题输入 */
+.create-page input[name="title"],
+.edit-page input[name="title"] {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* 摘要 */
+.create-page textarea[name="description"],
+.edit-page textarea[name="description"] {
+  min-height: 110px;
+  background: rgba(250,250,250,0.9);
+}
+
+/* Markdown 编辑区 */
+.create-page textarea[name="markdown"],
+.edit-page textarea[name="markdown"] {
+  min-height: 320px;
+  font-family: Consolas, monospace;
+  font-size: 13px;
+}
+
+/* =========================
+   🔘 按钮
+========================= */
+
+.create-page button,
+.edit-page button {
+  margin-top: 10px;
+  padding: 12px;
+
+  background: #007fff;
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.create-page button:hover,
+.edit-page button:hover {
+  background: #0066cc;
+  transform: translateY(-1px);
+}

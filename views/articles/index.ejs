@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+<h1>📚 文章列表</h1>
+
+<a href="/articles/new">➕ 新建</a>
+
+<% articles.forEach(article => { %>
+  <div class="card">
+    <h2>
+      <a href="/articles/<%= article.slug %>">
+        <%= article.title %>
+      </a>
+    </h2>
+
+    <p><%= article.description %></p>
+  </div>
+<% }) %>
+
+<%- include('../partials/footer') %>
