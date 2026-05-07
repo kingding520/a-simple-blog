@@ -205,3 +205,88 @@ a:hover {
   background: #0066cc;
   transform: translateY(-1px);
 }
+
+/* =========================
+   📖 SHOW 页面
+========================= */
+
+.show-page {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+/* 文章卡片 */
+.article-show {
+  width: 100%;
+  max-width: 800px;
+
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+
+  padding: 40px;
+  border-radius: 18px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* 标题 */
+.article-show h1 {
+  font-size: 34px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* 摘要 */
+.article-show .description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+/* 正文 */
+.article-show .content {
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+/* 按钮区域 */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+/* 编辑按钮 */
+.edit-btn,
+.delete-btn {
+  padding: 10px 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 14px;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+/* 编辑 */
+.edit-btn {
+  background: #007fff;
+  color: white;
+}
+
+/* 删除 */
+.delete-btn {
+  background: #ff4d4f;
+  color: white;
+}
+
+/* hover */
+.edit-btn:hover,
+.delete-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}

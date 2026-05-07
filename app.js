@@ -46,3 +46,9 @@ app.use('/articles', articlesRouter)
 app.listen(3000, () => {
   console.log('http://localhost:3000')
 })
+
+// ========== 新增：腾讯云函数适配代码 ==========
+const serverless = require('serverless-http');
+
+// 导出 handler 作为云函数入口
+module.exports.handler = serverless(app);

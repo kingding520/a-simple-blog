@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
 
     await article.save()
 
-    res.redirect(`/articles/${article.slug}`)
+    res.redirect(`/articles/${article._id}`)
   } catch (e) {
     console.log(e)
     res.render('articles/new', { article: req.body })
@@ -39,11 +39,14 @@ router.post('/', async (req, res) => {
 })
 
 /* ======================
-   编辑页面（⚠️ 必须在 slug 前）
+   编辑页面
 ====================== */
 router.get('/:id/edit', async (req, res) => {
   const article = await Article.findById(req.params.id)
-  if (!article) return res.redirect('/articles')
+
+  if (!article) {
+    return res.redirect('/articles')
+  }
 
   res.render('articles/edit', { article })
 })
@@ -54,7 +57,10 @@ router.get('/:id/edit', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const article = await Article.findById(req.params.id)
-    if (!article) return res.redirect('/articles')
+
+    if (!article) {
+      return res.redirect('/articles')
+    }
 
     article.title = req.body.title
     article.description = req.body.description
@@ -62,7 +68,7 @@ router.put('/:id', async (req, res) => {
 
     await article.save()
 
-    res.redirect(`/articles/${article.slug}`)
+    res.redirect(`/articles/${article._id}`)
   } catch (e) {
     console.log(e)
     res.render('articles/edit', { article: req.body })
@@ -74,20 +80,22 @@ router.put('/:id', async (req, res) => {
 ====================== */
 router.delete('/:id', async (req, res) => {
   await Article.findByIdAndDelete(req.params.id)
+
   res.redirect('/articles')
 })
 
 /* ======================
    详情（⚠️ 最后）
 ====================== */
-router.get('/:slug', async (req, res) => {
-  const article = await Article.findOne({ slug: req.params.slug })
+router.get('/:id', async (req, res) => {
+  const article = await Article.findById(req.params.id)
 
-  if (!article) return res.redirect('/articles')
+  if (!article) {
+    return res.redirect('/articles')
+  }
 
   res.render('articles/show', { article })
 })
 
 module.exports = router
-
 //本段代码由chatgpt生成
